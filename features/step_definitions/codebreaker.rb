@@ -10,3 +10,10 @@ end
 Then /^the game should say "([^\"]*)"$/ do |message|
   @messenger.string.split("\n").should include(message)
 end
+
+Given /^the secret code is (. . . . )$/ do |code|
+	@messenger = StringIO.new
+	game = Codebreaker::Game.new(@messenger)
+	game.start(code.split)
+end
+
