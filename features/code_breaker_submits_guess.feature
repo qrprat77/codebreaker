@@ -39,3 +39,13 @@ Feature: code-breaker submits guess
 	  | code    | guess   | mark |
 	  | r g y c | r w w w | b    |
 	  | r g y c | w w r w | w    |
+	   
+	Scenarios: no spaces in the guess code
+	  | code    | guess   | mark |
+	  | r g y c | rgyc    | bbbb |
+
+	Scenarios: dups in gues match color in code
+	  | code    | guess   | mark |
+	  | r y g c | r y g g | bbb  |
+	  | r y g c | r y c c | bbb  |
+	  | r y g c | g y r g | bww  |
