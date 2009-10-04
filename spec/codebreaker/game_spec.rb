@@ -19,6 +19,13 @@ module Codebreaker
 			end
 		end #starting up context
 		context "marking a guess" do
+			context "with the text 'reveal'" do 
+				it "should send the secret code to the messenger" do 
+					@game.start(stub('generator', :code => %w[r g y c]))
+					@messenger.should_receive(:puts).with("r g y c")
+					@game.guess(["reveal"])
+				end
+			end
 			context "with all 4 colors correct in the correct places" do
 				it "should mark the guess with bbbb" do 
 					@game.start(stub('generator', :code => %w[r g y c]))
@@ -40,13 +47,7 @@ module Codebreaker
 					@game.guess(%w[y r g c])
 				end
 			end # 4 correct 1 right spot
-			context "with no spaces in the guess code" do
-			   it "should mark the guess with bbbb" do 
-				   @game.start(stub('generator', :code => %w[r g y c]))
-				   @messenger.should_receive(:puts).with("bbbb")
-				   @game.guess(%w[rgyc])
-			   end
-			end #no spaces
+			
 		end #marking guess context
 		context "with duplicates in the guess that match a peg in the code" do
 			context "with three colors correct in the correct places" do

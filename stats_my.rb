@@ -1,6 +1,6 @@
 module Codebreaker
 	class Stats
-		attr_reader :codes
+		attr_accessor :codes
 		
 		def initialize
 			@counts = (1..4).collect { Hash.new {|h,k| h[k] = 0} }
@@ -10,10 +10,11 @@ module Codebreaker
 		def puts(code)
 			
 			if code =~ /\w \w \w \w$/
-				codes << code.split
-				codes.last.each_with_index do |color, index|
+				@code = code.split
+				@code.each_with_index do |color, index|
 					@counts[index][color] += 1
 				end
+				@codes << @code
 			end
 		end
 		

@@ -11,31 +11,19 @@ module Codebreaker
 		end
 		
 		def guess(guess)
-			result= [nil, nil, nil, nil]
-			
-			while(guess.length != 4)
-			guess = forced_array(guess)
-			end
-			guess.each_with_index do |peg, index|
-				if peg == 0
-					result << "Error improper input"
-					break
-				end
-				if @code[index] == peg
-					result[index] = "b"
-				elsif @code.include?(peg)
-					result[@code.index(peg)] ||= "w"
-				end
-			end
-			@messenger.puts result.compact.sort.join
-		end
-		
-		def forced_array(g)
-			if g.length == 1
-				return g[0].scan(/./)
+			if guess == ['reveal']
+				@messenger.puts @code.join(" ")
 			else
-				empty = [0, 0, 0, 0]
-				return empty
+				result= [nil, nil, nil, nil]
+				
+				guess.each_with_index do |peg, index|
+					if @code[index] == peg
+						result[index] = "b"
+					elsif @code.include?(peg)
+						result[@code.index(peg)] ||= "w"
+					end
+				end
+				@messenger.puts result.compact.sort.join
 			end
 		end
 	end
