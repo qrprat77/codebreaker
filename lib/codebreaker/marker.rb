@@ -10,12 +10,20 @@ class Marker
       end
 
       def number_match_count
-	      number_match_count = 0
-	      (0..3).inject(0) do |count, index|
-		      count +  (number_match?(index) ? 1 : 0)
-	      end #iteration over index
-      end
+		total_match_count - exact_match_count
+	  end
 
+	  def total_match_count
+		count = 0
+		secret = @secret.split('')
+		@guess.split('').inject(0) do |count, n|
+			count + (delete_first(secret, n) ? 1 : 0)			
+		end
+	  end
+	  def delete_first(code, n)
+		code.delete_at(code.index(n)) if code.index(n)
+	  end
+	  
       def exact_match?(index)
 		@guess[index] == @secret[index]
       end #exact_match?
@@ -23,7 +31,8 @@ class Marker
       def number_match?(index)
 		@secret.include?(@guess[index]) && !exact_match?(index)
       end #number_match?
-	
+	  
+	  
   
   
 end #Marker
