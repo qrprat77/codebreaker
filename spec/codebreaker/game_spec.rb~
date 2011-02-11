@@ -24,7 +24,6 @@ module Codebreaker
 		    game.start('1234')
 		    output.should_receive(:puts).with('++++')
 		    game.guess('1234')
-		  end
 		end #describe guess
 		
 	end #describe game
