@@ -1,7 +1,0 @@
-/dev/ad0s1f    4.1G    3.5G    332M    91%    /usr
-/dev/ad0s1f    4.1G    3.5G    331M    91%    /usr
-/dev/ad0s1f    4.1G    3.5G    330M    92%    /usr
-/dev/ad0s1f    4.1G    3.5G    330M    92%    /usr
-/dev/ad0s1f    4.1G    3.5G    330M    92%    /usr
-/dev/ad0s1f    4.1G    3.5G    319M    92%    /usr
-/dev/ad0s1f    4.1G    3.4G    376M    90%    /usr
